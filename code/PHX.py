@@ -23,6 +23,17 @@ def remove_data(parking_dicts):
         del park_dict["\ufeffX"]
         del park_dict["Y"]
         del park_dict["OBJECTID"]
+        del park_dict["METER_NUMBER"]
+        del park_dict["METER_TYPE"]
+        del park_dict["Status"]
+        del park_dict["HC_METER"]
+        del park_dict["BIKERACK"]
+        del park_dict["DUAL_HEAD"]
+        del park_dict["COMMENTS"]
+        del park_dict["GlobalID"]
+        del park_dict["AssetID"]
+        del park_dict["strSegmentID"]
+        del park_dict["MOTORCYCLE_METER"]
         # for data in unneeded_data:
         #     if data in parking_dicts:
         #         del parking_dicts[data]
