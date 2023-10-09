@@ -3,11 +3,11 @@ import os
 import re
 
 INPUT_DIR = os.path.join("../file")
-SJ_PATH = os.path.join(INPUT_DIR, "San Jose Parking .csv")
+SJ_PATH = os.path.join(INPUT_DIR, "San Jose Parking.csv")
 OUTPUT_DIR = "artifacts"
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "SJ")
 
-def load_SD_parking():
+def load_SJ_parking():
     """"Loads the CSV of SJ parking data as a list of dictionaries"""
     parking_dicts = list()
     with open(SJ_PATH, "r") as file:
@@ -33,7 +33,7 @@ def transform_data(cut_data):
         rate = "Average Rate"
         if cut_dict["Rate"] == "0":
             cut_dict[rate] =  "$0"
-        if cut_dict["Rate"] = "2":
+        if cut_dict["Rate"] == "2":
             cut_dict[rate] = "$2"
         #Excluded tour bus rates since we're focusing on noncommercial parking rates for now
     for cut_dict in cut_data:
