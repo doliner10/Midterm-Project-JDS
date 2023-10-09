@@ -19,8 +19,6 @@ def load_SJ_parking():
 def remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
-    needed_data = ["OBJECTID", "STREET_NAME", "STREET_NUM", "OLD_RATE_AREA" ]
-    #unneeded_data = ['\ufeffX', 'Y', 'OBJECTID', 'METER_NUMBER', 'METER_TYPE', 'STATUS', 'HC_METER', 'BIKERACK', 'DUAL_HEAD', 'COMMENTS', 'strSegmentID', 'GlobalID']
     for park_dict in parking_dicts:
         new_dict = {"Street Address": park_dict["METERADDRESS"], "Rate": park_dict["PARKINGRATE"], "City": "San Jose"}
         cleaned_dict.append(new_dict)
@@ -35,7 +33,6 @@ def transform_data(cut_data):
             cut_dict[rate] =  "$0"
         if cut_dict["Rate"] == "2":
             cut_dict[rate] = "$2"
-        #Excluded tour bus rates since we're focusing on noncommercial parking rates for now
     for cut_dict in cut_data:
         del cut_dict["Rate"]
     transform_data = cut_data
