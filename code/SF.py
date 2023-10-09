@@ -24,48 +24,7 @@ def remove_data(parking_dicts):
     for park_dict in parking_dicts:
         new_dict = {"Street Address": park_dict["STREET_NUM"] +" " + park_dict["STREET_NAME"], "RATE AREA": park_dict["OLD_RATE_AREA"], "City": "San Francisco"}
         cleaned_dict.append(new_dict)
-        # del park_dict["OBJECTID"]
-        # del park_dict["PARKING_SPACE_ID"]
-        # del park_dict["MS_PAY_STATION_ID"]
-        # del park_dict["ON_OFFSTREET_TYPE"]
-        # del park_dict["SENSOR_FLAG"]
-        # del park_dict["OSP_ID"]
-        # del park_dict["PM_DISTRICT_ID"]
-        # del park_dict["BLOCKFACE_ID"]
-        # del park_dict["ACTIVE_METER_FLAG"]
-        # del park_dict["REASON_CODE"]
-        # del park_dict["SMART_METER_FLAG"]
-        # del park_dict["METER_TYPE"]
-        # del park_dict["strSegmentID"]
-        # del park_dict["MOTORCYCLE_METER"]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # del park_dict[""]
-        # for data in unneeded_data:
-        #     if data in parking_dicts:
-        #         del parking_dicts[data]
+   
     cut_data = cleaned_dict
     return cut_data
 
@@ -125,21 +84,12 @@ def transform_data(cut_data):
     for cut_dict in cut_data:
         del cut_dict["RATE AREA"]
     transform_data = cut_data
-    return print(transform_data)
+    return transform_data
 
-# def proper_names(transform_data):
-#     """Creates new keys with proper names for remaining data and adds city key-value"""
-#     for data in transform_data:
-#         data["City"] = "Phoenix"
-#         if "StreetAddress" in data:
-#             data["Street Address"] = data["StreetAddress"]
-#             del data["StreetAddress"]
-#     proper_data = transform_data
-#     return print(transform_data)
 
 if __name__ == "__main__":
 
     SF_data = load_SF_parking()
     cut_data = remove_data(SF_data)
     transform_data = transform_data(cut_data)
-    #proper_names(transform_data)
+    print(transform data)
