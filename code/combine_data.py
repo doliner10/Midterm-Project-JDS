@@ -2,7 +2,12 @@ import CSV
 import os
 from SJ import load_SJ_Parking and cut_data and tranform_data and SJ_data
 
+BASE_DIR = "artifacts"
+CSV_PATH = os.path.join(BASE_DIR, "results.csv")
+
+
 combined_data = list()
+
 SJ_data = load_SJ_parking()
 cut_data = remove_data(SJ_data)
 transform_data = transform_data(cut_data)
@@ -16,7 +21,7 @@ def sort_data(combined_data)
     final_data = city_sort
     return final data
 
-def write_data_to_CSV(final_data)
+def write_data_to_CSV(final_data, path)
     """Writes data to a CSV"""
     fieldname = ["City", "Street Address", "Rate"]
     with open(path, 'w+') as file:
