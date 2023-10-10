@@ -41,15 +41,35 @@ def remove_data(parking_dicts):
     return cut_data
 
 def transform_data(cut_data):
-    """Transforms RateTime values to average rate in $ per hour"""
+    """Transforms RateTime values to average rate in $ per hour and returns the most common max time limit for each spot"""
     for cut_dict in cut_data:
         rate = "Average Rate"
+        time = "Max Hours"
         if cut_dict["RateTimeLimits"] == "$1.00/hr 1hr 8A-10P Mon-Fri" or "$1.00/hr 2hr 8A-10P Mon-Fri" or "$1.00/hr 2hr 8A-10P Mon-Fri" or "$1.00/hr 30min 8A-10P Mon-Fri" or "$1.00/hr 4hr 8A-10P Mon-Fri" or "$1.00/hr 8hr 8A-10P Mon-Fri":
             cut_dict[rate] =  float(1.00)
         if cut_dict["RateTimeLimits"] == "$1.50/hr 15min max 8A-10P Mon-Sun" or "$1.50/hr 15min max 8A-5P M-F" or "$1.50/hr 1hr 8A-5P, 4HR 5P-10P" or "$1.50/hr 1hr max 8A-10P Mon-Sun" or "$1.50/hr 1hr max 8A-5P M-F" or "$1.50/hr 1hr Max 8A-5P Mon-Friday, 2hr Max 5P-10P Mon-Friday 2hr Max Sat & Sun" or "$1.50/hr 1hr Max 8A-5P Mon-Friday, 2hr Max 5P-10P Mon-Friday 2hr Max Sat & Sun-ADA" or "$1.50/hr 2hr 8A-5P, 4HR 5P-10P" or "$1.50/hr 2hr max 8A-10P Mon-Sun" or "$1.50/hr 30min 8A-5P, 4HR 5P-10P" or "$1.50/hr 30min max 8A-10P Mon-Su" or "$1.50/hr 30min max 8A-5P M-F" or "$1.50/hr 4hr max 8A-10P Mon-Sun" or "$1.50/hr 4hr max 8A-10P Mon-Sun PBP" or "$1.50/hr 4hr max 8A-10P Mon-Sun-ADA" or "$1.50/hr 4hr max 8A-5P M-F" or "$1.50/hr 4hr max 8A-5P M-F-ADA" or "$1.50/hr 5hr max 8A-10P Mon-Sun" or "$1.50/hr 5hr max 8A-10P Mon-Sun-ADA" or "$1.50/hr 8hr max 8A-5P M-F" or "ASU $1.50/hr 1hr 8A-4P Mon-Thur, 8a-10p Fri-Sun & 6hr 4P-10P Mon-Thur" or "ASU $1.50/hr 2hr Max 8A-4P Mon-Thur, 8A-10P Fri-Sun & 6hr Max 4P-10P Mon-Thur":
             cut_dict[rate] = float(1.50)
         if cut_dict["RateTimeLimits"] ==  "2hr" or "Copy of 8859 - M5+" or "Loading Zone 2hr Max" or "Loading Zone 4hr Max":
             cut_dict[rate] = float(0.00)
+        if cut_dict["RateTimeLimits"] ==  "":
+            cut_dict[rate] = float(0.00)
+    for cut_dict in cut_data:
+        if "1hr" and not "6hr" and not "2hr" in cut_dict:
+            cut_dict[time] = float(1)
+        if "2hr" in cut_dict["RateTimeLimits"]:
+            cut_dict[time] = float(2)
+        if "30min" in cut_dict["RateTimeLimits"]:
+            cut_dict[time] = float(0.5)
+        if "4hr" and not "2hr" in cut_dict["RateTimeLimits"]:
+            cut_dict[time] = float(4)
+        if "15min" in cut_dict["RateTimeLimits"]:
+            cut_dict[time] = float(0.25)
+        if "8hr" in cut_dict["RateTimeLimits"]:
+            cut_dict[time] = float(8)
+        if "1hr" and "6hr" in cut_dict["RateTimeLimits"]:
+            cut_dict[time] = float(6)
+        if "Copy of 8859" or "" in cut_dict["RateTimeLimits"]:
+            cut_dict = float(0)
     for cut_dict in cut_data:
         del cut_dict["RateTimeLimits"]
     transform_data = cut_data
@@ -65,7 +85,7 @@ def proper_names(transform_data):
     proper_data = transform_data
     return proper_data
 
-def rename_data(proper_data)
+def rename_data(proper_data):
     """Renames data to city data"""
     PHX_data = proper_data
     return PHX_data
@@ -76,6 +96,7 @@ if __name__ == "__main__":
     cut_data = remove_data(PHX_data)
     transform_data = transform_data(cut_data)
     proper_names = proper_names(transform_data)
-    rename_data = rename_data(propert_names)
-    PHX_data = rename_data(proper_names)
+    rename_data = rename_data(proper_names)
+    PHX_data = rename_data
+    print(PHX_data)
 
