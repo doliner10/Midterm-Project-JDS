@@ -15,32 +15,6 @@ def indy_parking_data():
         parking_dicts.append(row)
     return parking_dicts
 
-#def remove_data(parking_dicts):
-#   "Cutting down data leaving only relevant columns"
-#    # omit_columns = ["X", "Y", "OBJECTID", "PRE_DIR", "STREET_NAME", "ADDRESS_BLOCK", "SUFFIX", "SUF_DIR", "METER_NUMBER", "SPACE_NUMBER", "SPACE_TYPE", "INSTALL_DATE", "RATE_INCREASE_DATE",  "ZONE_NAME", "OP_HOURS", "OP_DAYS", "PAY_TYPE"]
-#    for park_dict in parking_dicts:
-#        del park_dict["X"]
-#        del park_dict["Y"]
-#       del park_dict["OBJECTID"]
-#        del park_dict["PRE_DIR"]
-#        del park_dict["STREET_NAME"]
-#        del park_dict["ADDRESS_BLOCK"]
-#        del park_dict["SUFFIX"]
-#        del park_dict["SUF_DIR"]
-#        del park_dict["METER_NUMBER"]
-#        del park_dict["SPACE_NUMBER"]
-#        del park_dict["SPACE_TYPE"]
-#        del park_dict["INSTALL_DATE"]
-#        del park_dict["RATE_INCREASE_DATE"]
-#        del park_dict["ZONE_NAME"]
-#        del park_dict["OP_HOURS"]
-#        del park_dict["OP_DAYS"]
-#        del park_dict["PAY_TYPE"]
- #   relevant_data = parking_dicts
- #   return relevant_data
-
-### another possible approoach
-
 def narrow_down_data(parking_dicts):
     # Define the columns to keep (relevant columns)
     relevant_columns = ["FULL_ADDRESS", "HOURLY_RATE"]  
@@ -57,9 +31,9 @@ def transform_data(relevant_data):
     for cut_dict in relevant_data:
         rate = "Average Rate"
         if cut_dict["HOURLY_RATE"] == "1.5" or "1.50":
-            cut_dict[rate] =  "$1.50"
+            cut_dict[rate] =  "1.50"
         if cut_dict["HOURLY_RATE"] == "1" or "1.0":
-            cut_dict[rate] = "$1.00"
+            cut_dict[rate] = "1.00"
     for cut_dict in relevant_data:
         del cut_dict["HOURLY_RATE"]
     transform_data = relevant_data
