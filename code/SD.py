@@ -49,10 +49,15 @@ def transform_data(cut_data):
     transform_data = cut_data
     return transform_data
 
+    def rename_data(transform_data)
+        """Renames data to city data"""
+        SD_data = proper_data
+        return SD_data
+
 
 if __name__ == "__main__":
 
     SD_data = load_SD_parking()
     cut_data = remove_data(SD_data)
     transform_data = transform_data(cut_data)
-    print(transform_data)
+    SD_data = rename_data(transform_data)
