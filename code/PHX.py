@@ -53,23 +53,23 @@ def transform_data(cut_data):
             cut_dict[rate] = float(0.00)
         if cut_dict["RateTimeLimits"] ==  "":
             cut_dict[rate] = float(0.00)
-    for cut_dict in cut_data:
-        if "1hr" and not "6hr" and not "2hr" in cut_dict:
-            cut_dict[time] = float(1)
-        if "2hr" in cut_dict["RateTimeLimits"]:
-            cut_dict[time] = float(2)
-        if "30min" in cut_dict["RateTimeLimits"]:
-            cut_dict[time] = float(0.5)
-        if "4hr" and not "2hr" in cut_dict["RateTimeLimits"]:
-            cut_dict[time] = float(4)
-        if "15min" in cut_dict["RateTimeLimits"]:
-            cut_dict[time] = float(0.25)
-        if "8hr" in cut_dict["RateTimeLimits"]:
-            cut_dict[time] = float(8)
-        if "1hr" and "6hr" in cut_dict["RateTimeLimits"]:
-            cut_dict[time] = float(6)
-        if "Copy of 8859" or "" in cut_dict["RateTimeLimits"]:
-            cut_dict = float(0)
+    # for cut_dict in cut_data:
+    #     if "1hr" and not "6hr" and not "2hr" in cut_dict:
+    #         cut_dict[time] = float(1)
+    #     if "2hr" in cut_dict["RateTimeLimits"]:
+    #         cut_dict[time] = float(2)
+    #     if "30min" in cut_dict["RateTimeLimits"]:
+    #         cut_dict[time] = float(0.5)
+    #     if "4hr" and not "2hr" in cut_dict["RateTimeLimits"]:
+    #         cut_dict[time] = float(4)
+    #     if "15min" in cut_dict["RateTimeLimits"]:
+    #         cut_dict[time] = float(0.25)
+    #     if "8hr" in cut_dict["RateTimeLimits"]:
+    #         cut_dict[time] = float(8)
+    #     if "1hr" and "6hr" in cut_dict["RateTimeLimits"]:
+    #         cut_dict[time] = float(6)
+    #     if "Copy of 8859" or "" in cut_dict["RateTimeLimits"]:
+    #         cut_dict = float(0)
     for cut_dict in cut_data:
         del cut_dict["RateTimeLimits"]
     transform_data = cut_data
