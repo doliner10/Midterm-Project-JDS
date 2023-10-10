@@ -70,7 +70,7 @@ def proper_names(transform_data):
     for data in transform_data:
         data["City"] = "Indianapolis"
         if "FULL_ADDRESS" in data:
-            data["FULL_ADDRESS"] = data["FULL_ADDRESS"]
+            data["Street Address"] = data["FULL_ADDRESS"]
             del data["FULL_ADDRESS"]
     return transform_data
 
