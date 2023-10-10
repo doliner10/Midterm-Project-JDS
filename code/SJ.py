@@ -48,4 +48,4 @@ if __name__ == "__main__":
     SJ_data = load_SJ_parking()
     cut_data = remove_data(SJ_data)
     transform_data = transform_data(cut_data)
-    print(transform_data)
+    SJ_data = rename_data(transform_data)
