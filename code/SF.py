@@ -30,53 +30,53 @@ def transform_data(cut_data):
     for cut_dict in cut_data:
         rate = "Average Rate"
         if cut_dict["RATE AREA"] == "-":
-            cut_dict[rate] =  "$0"
+            cut_dict[rate] =  float(0)
         if cut_dict["RATE AREA"] == "Area 1":
-            cut_dict[rate] = "$3.50"
+            cut_dict[rate] = float(3.50)
         if cut_dict["RATE AREA"] ==  "Area 2":
-            cut_dict[rate] = "$3.00"
+            cut_dict[rate] = float(3.00)
         if cut_dict["RATE AREA"] ==  "Area 3":
-            cut_dict[rate] = "$2.00"
+            cut_dict[rate] = float(2.00)
         if cut_dict["RATE AREA"] ==  "Area 4":
-            cut_dict[rate] = "$3.12"
+            cut_dict[rate] = float(3.12)
             #For this one, the data listed an Area 4, but the key provided at the website only listed an area 5. Since an area 5 is not included in the spreadsheet, I'm going to assume that is a typo and it should be area 4. Also, this region has variable pricing, so I took the middle of the high and low prices, 0.25 and 6.00 as the average rate for this zone
         if cut_dict["RATE AREA"] ==  "MC1":
-            cut_dict[rate] = "$0.70"
+            cut_dict[rate] = float(0.70)
         if cut_dict["RATE AREA"] ==  "MC2":
-            cut_dict[rate] = "$0.60"
+            cut_dict[rate] = float(0.60)
         if cut_dict["RATE AREA"] ==  "MC3":
-            cut_dict[rate] = "$0.40"
+            cut_dict[rate] = float(0.40)
         if cut_dict["RATE AREA"] ==  "MC4":
-            cut_dict[rate] = "$3.12"
+            cut_dict[rate] = float(3.12)
             #Similar to Area 4, the key provided by at data.sfgov listed an area 5 that does not show up in the CSV, so I'm assuming they're referring to area 4 in the CSV. Also, pricing was variable between 0.25 and 6.00, so I'm going to take the middle of the 2, $3.12
         if cut_dict["RATE AREA"] ==  "Port 1":
-            cut_dict[rate] = "$2.50"
+            cut_dict[rate] = float(2.50)
         if cut_dict["RATE AREA"] ==  "Port 2":
-            cut_dict[rate] = "$2.50"
+            cut_dict[rate] = float(2.50)
         if cut_dict["RATE AREA"] ==  "Port 3":
-            cut_dict[rate] = "$2.00"
+            cut_dict[rate] = float(2.00)
         if cut_dict["RATE AREA"] ==  "Port 4":
-            cut_dict[rate] = "$2.00"
+            cut_dict[rate] = float(2.00)
         if cut_dict["RATE AREA"] ==  "Port 5":
-            cut_dict[rate] = "$3.00"
+            cut_dict[rate] = float(3.00)
         if cut_dict["RATE AREA"] ==  "Port 6":
-            cut_dict[rate] = "$3.00"
+            cut_dict[rate] = float(3.00)
         if cut_dict["RATE AREA"] ==  "Port 7":
-            cut_dict[rate] = "$3.00"
+            cut_dict[rate] = float(3.00)
         if cut_dict["RATE AREA"] ==  "Port 8":
             cut_dict[rate] = "$3.00"
         if cut_dict["RATE AREA"] ==  "Port 9":
-            cut_dict[rate] = "$1.00"
+            cut_dict[rate] = float(1.00)
         if cut_dict["RATE AREA"] ==  "Port 10":
-            cut_dict[rate] = "$1.00"
+            cut_dict[rate] = float(1.00)
         if cut_dict["RATE AREA"] ==  "Port 11":
-            cut_dict[rate] = "$1.00"
+            cut_dict[rate] = float(1.00)
         if cut_dict["RATE AREA"] ==  "Port 12":
             cut_dict[rate] = "$1.00"
         if cut_dict["RATE AREA"] ==  "PortMC1":
-            cut_dict[rate] = "$0.25"
+            cut_dict[rate] = float(0.25)
         if cut_dict["RATE AREA"] ==  "PortMC2":
-            cut_dict[rate] = "$0.50"
+            cut_dict[rate] = float(0.50)
         #Excluded tour bus rates since we're focusing on noncommercial parking rates for now
     for cut_dict in cut_data:
         del cut_dict["RATE AREA"]
