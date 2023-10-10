@@ -30,9 +30,9 @@ def transform_data(cut_data):
     for cut_dict in cut_data:
         rate = "Average Rate"
         if cut_dict["Rate"] == "0":
-            cut_dict[rate] =  "$0"
+            cut_dict[rate] =  float(0)
         if cut_dict["Rate"] == "2":
-            cut_dict[rate] = "$2"
+            cut_dict[rate] = float(2)
     for cut_dict in cut_data:
         del cut_dict["Rate"]
     transform_data = cut_data
