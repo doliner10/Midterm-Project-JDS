@@ -30,23 +30,37 @@ def transform_data(relevant_data):
     "Transforming Rate Time data into average rates"
     for cut_dict in relevant_data:
         rate = "Average Rate"
-        if cut_dict["RateType"] == "Flat":
+        if cut_dict["RateType"] == "FLAT":
             cut_dict[rate] =  cut_dict["RateRange"]
-        if cut_dict["RateType"] == "TOD" and '-' in cut_dict["RateRange"]:
+        elif cut_dict["RateType"] == "TOD" and '-' in cut_dict["RateRange"]:
             parts = cut_dict["RateRange"].split('-')
             if len(parts) == 2:
                 start_rate = parts[0].strip('$').strip()
                 end_rate = parts[1].strip('$').strip()
                 average_rate = f"${(float(start_rate.strip('$')) + float(end_rate.strip('$'))) / 2.0:.2f}"
                 cut_dict[rate] = average_rate
-        if cut_dict["RateType"] == "TOD" and '-' not in cut_dict["RateRange"]:
+        elif cut_dict["RateType"] == "TOD" and '-' not in cut_dict["RateRange"]:
             cut_dict[rate] = cut_dict["RateRange"]
-        if cut_dict["RateType"] == "JUMP":
-            continue
+        elif cut_dict["RateType"] == "JUMP":
+            parts = cut_dict["RateRange"].split('-')
+            if len(parts) == 2:
+                start_rate = parts[0].split('/')[0].strip('$').strip()
+                end_rate = parts[1].split('/')[0].strip('$').strip()
+                average_rate_jump = f"${(float(start_rate.strip('$')) + float(end_rate.strip('$'))) / 2.0:.2f}"
+                cut_dict[rate] = average_rate_jump
+        
+
         del cut_dict["RateType"]
         del cut_dict["RateRange"]
     transform_data = relevant_data
     return transform_data
+
+def convert_average_rate_to_float(transformed_data):
+    for cut_dict in transformed_data:
+        if "Average Rate" in cut_dict:
+            # Remove the dollar sign and convert to float
+            cut_dict["Average Rate"] = float(cut_dict["Average Rate"].lstrip('$'))
+    return transformed_data
 
 def proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
@@ -61,6 +75,7 @@ if __name__ == "__main__":
     parking_data = LA_parking_data()
     narrowed_data = narrow_down_data(parking_data)
     transformed_data = transform_data(narrowed_data)
-    modified_data = proper_names(transformed_data)
+    converted_data = convert_average_rate_to_float(transformed_data)
+    modified_data = proper_names(converted_data)
 
     print(modified_data)
