@@ -38,6 +38,10 @@ def transform_data(cut_data):
     transform_data = cut_data
     return transform_data
 
+def rename_data(transform_data)
+    """Renames list to San Jose"""
+    SJ_data = transform_data
+
 
 if __name__ == "__main__":
 
