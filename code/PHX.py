@@ -65,7 +65,7 @@ def proper_names(transform_data):
     proper_data = transform_data
     return proper_data
 
-def rename_data(propert_data)
+def rename_data(proper_data)
     """Renames data to city data"""
     PHX_data = proper_data
     return PHX_data
@@ -76,5 +76,6 @@ if __name__ == "__main__":
     cut_data = remove_data(PHX_data)
     transform_data = transform_data(cut_data)
     proper_names = proper_names(transform_data)
+    rename_data = rename_data(propert_names)
     PHX_data = rename_data(proper_names)
 
