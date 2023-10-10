@@ -32,17 +32,17 @@ def transform_data(cut_data):
     for cut_dict in cut_data:
         rate = "Average Rate"
         if "$" not in cut_dict["Rate Config"]:
-            cut_dict[rate] =  "$0"
+            cut_dict[rate] =  float(0)
         if "$1.25" in cut_dict["Rate Config"]:
-            cut_dict[rate] = "$1.25"
+            cut_dict[rate] = float(1.25)
         if "$1.00" in cut_dict["Rate Config"]:
-            cut_dict[rate] = "$1.00"
+            cut_dict[rate] = float(1.00)
         if "$0.50" in cut_dict["Rate Config"]:
-            cut_dict[rate] = "$0.50"
+            cut_dict[rate] = float(0.50)
         if "$0.75" in cut_dict["Rate Config"]:
-            cut_dict[rate] = "$0.75"
+            cut_dict[rate] = float(0.75)
         if "$125" in cut_dict["Rate Config"]:
-            cut_dict[rate] = "$125"
+            cut_dict[rate] = float(125)
         #Excluded tour bus rates since we're focusing on noncommercial parking rates for now
     for cut_dict in cut_data:
         del cut_dict["Rate Config"]
