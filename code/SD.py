@@ -1,11 +1,8 @@
 import csv 
 import os
-import re
 
 INPUT_DIR = os.path.join("../file")
 SD_PATH = os.path.join(INPUT_DIR, "SD Parking Info.csv")
-OUTPUT_DIR = "artifacts"
-OUTPUT_PATH = os.path.join(OUTPUT_DIR, "SD")
 
 def load_SD_parking():
     """"Loads the CSV of SD parking data as a list of dictionaries"""
@@ -20,7 +17,6 @@ def remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
     needed_data = ["OBJECTID", "STREET_NAME", "STREET_NUM", "OLD_RATE_AREA" ]
-    #unneeded_data = ['\ufeffX', 'Y', 'OBJECTID', 'METER_NUMBER', 'METER_TYPE', 'STATUS', 'HC_METER', 'BIKERACK', 'DUAL_HEAD', 'COMMENTS', 'strSegmentID', 'GlobalID']
     for park_dict in parking_dicts:
         new_dict = {"Street Address": park_dict["sub_area"], "Rate Config": park_dict["config_name"], "City": "San Diego"}
         cleaned_dict.append(new_dict)
@@ -43,7 +39,6 @@ def transform_data(cut_data):
             cut_dict[rate] = float(0.75)
         if "$125" in cut_dict["Rate Config"]:
             cut_dict[rate] = float(125)
-        #Excluded tour bus rates since we're focusing on noncommercial parking rates for now
     for cut_dict in cut_data:
         del cut_dict["Rate Config"]
     transform_data = cut_data
