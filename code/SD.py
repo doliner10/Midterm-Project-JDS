@@ -3,6 +3,8 @@ import os
 
 INPUT_DIR = os.path.join("../file")
 SD_PATH = os.path.join(INPUT_DIR, "SD Parking Info.csv")
+OUTPUT_DIR = os.path.join("../artifacts")
+SD_OUT = os.path.join(OUTPUT_DIR, "SD_results.csv")
 
 def load_SD_parking():
     """"Loads the CSV of SD parking data as a list of dictionaries"""
@@ -26,7 +28,7 @@ def remove_data(parking_dicts):
 def transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour"""
     for cut_dict in cut_data:
-        rate = "Average Rate"
+        rate = "Rate"
         if "$" not in cut_dict["Rate Config"]:
             cut_dict[rate] =  float(0)
         if "$1.25" in cut_dict["Rate Config"]:
@@ -44,10 +46,17 @@ def transform_data(cut_data):
     transform_data = cut_data
     return transform_data
 
-    def rename_data(transform_data)
-        """Renames data to city data"""
-        SD_data = proper_data
-        return SD_data
+# def rename_data(transform_data)
+#     """Renames data to city data"""
+#     SD_data = proper_data
+#     return SD_data
+def write_data_to_CSV(final_data, path):
+    """Writes data to a CSV"""
+    fieldname = ["City", "Street Address", "Rate"]
+    with open(path, 'w+') as file:
+        dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
+        dict_writer.writeheader()
+        dict_writer.writerows(final_data)
 
 
 if __name__ == "__main__":
@@ -55,4 +64,5 @@ if __name__ == "__main__":
     SD_data = load_SD_parking()
     cut_data = remove_data(SD_data)
     transform_data = transform_data(cut_data)
-    SD_data = rename_data(transform_data)
+    #SD_data = rename_data(transform_data)
+    write_data_to_CSV(transform_data, SD_OUT)
