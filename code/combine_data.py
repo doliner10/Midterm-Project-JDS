@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 parking_data = pd.DataFrame()
@@ -21,7 +22,7 @@ city_counts.plot(kind='bar')
 plt.xlabel('City')
 plt.ylabel('Number of parking meters/kiosks')
 plt.title('Number of parking meters/kiosks by city')
-
+plt.show()
 
 
 # import CSV
