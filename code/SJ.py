@@ -46,3 +46,4 @@ if __name__ == "__main__":
     cut_data = SJ_remove_data(SJ_data)
     transform_data = SJ_transform_data(cut_data)
     SJ_data = SJ_rename_data(transform_data)
+    print(transform_data)

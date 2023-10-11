@@ -54,4 +54,4 @@ if __name__ == "__main__":
     SD_data = load_SD_parking()
     cut_data = SD_remove_data(SD_data)
     transform_data = SD_transform_data(cut_data)
-    SD_data = rename_data(transform_data)
+    SD_data = SD_rename_data(transform_data)

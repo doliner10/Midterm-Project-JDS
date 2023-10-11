@@ -5,8 +5,8 @@ import re
 
 INPUT_DIR = os.path.join("../file")
 NYC_PATH = os.path.join(INPUT_DIR, "New York Parking Rate.csv")
-OUTPUT_DIR = "artifacts"
-OUTPUT_PATH = os.path.join(OUTPUT_DIR, "NYC")
+OUTPUT_DIR = "../artifacts"
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, "NYC.csv")
 
 def load_NYC_parking():
     """"Loads the CSV of NYC parking data as a list of dictionaries"""
@@ -29,7 +29,7 @@ def nyc_remove_data(parking_dicts):
 def nyc_calculate_average(cut_data):
     """"calculate average parking rate"""
     for cut_dict in cut_data:
-        rate = "Average Rate"
+        rate = "Rate"
         if cut_dict["Rate"] == "$1.25 1st Hour / $2.00 2nd Hour":
             cut_dict[rate] = float(1.625)
         if cut_dict["Rate"] == "$1.25 1st Hour / $2.00 2nd Hour (Monday - Thursday) / $1.25 Per Hour (Friday)":
@@ -68,8 +68,16 @@ def nyc_calculate_average(cut_data):
             cut_dict[rate] = float(0)
     for cut_dict in cut_data:
         del cut_dict["Rate"]
-    calculate_average = cut_data
-    return calculate_average
+    nyc_calculate_average = cut_data
+    return nyc_calculate_average
+
+def nyc_write_data_to_CSV(nyc_calculate_average, OUTPUT_PATH):
+    """Writes data to a CSV"""
+    fieldname = ["City", "Street Address", "Rate"]
+    with open(OUTPUT_PATH, 'w+', newline='') as file:
+        dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
+        dict_writer.writeheader()
+        dict_writer.writerows(nyc_calculate_average)
 
 if __name__ == "__main__":
 
@@ -77,3 +85,4 @@ if __name__ == "__main__":
     cut_data = nyc_remove_data(NYC_data)
     transform_data = nyc_calculate_average(cut_data)
     print(transform_data)
+    nyc_write_data_to_CSV(transform_data, OUTPUT_PATH)

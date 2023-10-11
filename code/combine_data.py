@@ -68,7 +68,7 @@ def load_LA():
 
 def sort_data(combined_data):
     """Sorts data by cities"""
-    city_sort = sorted(data, key=lambda x: x["City"])
+    city_sort = sorted(combined_data, key=lambda x: x["City"])
     final_data = city_sort
     return final_data
 
@@ -78,7 +78,7 @@ def write_data_to_CSV(final_data, path):
     with open(path, 'w+') as file:
         dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
         dict_writer.writeheader()
-        dict_writer.writerows(data)
+        dict_writer.writerows(final_data)
     return
 
 if __name__ == "__main__":
