@@ -3,6 +3,8 @@ import os
 
 INPUT_DIR = os.path.join("../file")
 SF_PATH = os.path.join(INPUT_DIR, "SF Data.csv")
+OUTPUT_DIR = os.path.join("../artifacts")
+SF_OUT = os.path.join(OUTPUT_DIR, "SF_results.csv")
 
 def load_SF_parking():
     """"Loads the CSV of SF parking data as a list of dictionaries"""
@@ -13,7 +15,7 @@ def load_SF_parking():
         parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+def SF_remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
@@ -22,10 +24,10 @@ def remove_data(parking_dicts):
     cut_data = cleaned_dict
     return cut_data
 
-def transform_data(cut_data):
+def SF_transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour"""
     for cut_dict in cut_data:
-        rate = "Average Rate"
+        rate = "Rate"
         if cut_dict["RATE AREA"] == "-":
             cut_dict[rate] =  float(0)
         if cut_dict["RATE AREA"] == "Area 1":
@@ -79,14 +81,25 @@ def transform_data(cut_data):
         del cut_dict["RATE AREA"]
     transform_data = cut_data
     return transform_data
-def rename_data(transform_data)
-    SF_data = transform_data
+
+def write_data_to_CSV(final_data, path):
+    """Writes data to a CSV"""
+    fieldname = ["City", "Street Address", "Rate"]
+    with open(path, 'w+') as file:
+        dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
+        dict_writer.writeheader()
+        dict_writer.writerows(final_data)
+
+# def rename_data(transform_data)
+#     SF_data = transform_data
+
 
 if __name__ == "__main__":
 
     SF_data = load_SF_parking()
     cut_data = remove_data(SF_data)
     transform_data = transform_data(cut_data)
-    SF_Data = rename_data(transform_data)
-    print(SF_data)
+    write_data_to_CSV(transform_data, SF_OUT)
+    #SF_Data = rename_data(transform_data)
+    
     

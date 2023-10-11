@@ -16,7 +16,8 @@ def load_Charlotte_parking():
             parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+
+def charlotte_remove_data(parking_dicts):
     """""create a new dictionary"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
@@ -28,5 +29,4 @@ def remove_data(parking_dicts):
 if __name__ == "__main__":
 
     Charlotte_data = load_Charlotte_parking()
-    cut_data = remove_data(Charlotte_data)
     print(cut_data)

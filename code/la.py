@@ -2,10 +2,11 @@ import csv
 import os
 import re
 
-INPUT_DIR = os.path.join("file")
+INPUT_DIR = os.path.join("../file")
 LA_PATH = os.path.join(INPUT_DIR, "LA Parking Info.csv")
 OUTPUT_DIR = "artifacts"
-OUTPUT_PATH = os.path.join(OUTPUT_DIR, "Los Angeles")
+OUTPUT_FILENAME = "Los Angeles.csv"
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, OUTPUT_FILENAME)
 
 def LA_parking_data():
     parking_dicts = list()
@@ -15,7 +16,7 @@ def LA_parking_data():
         parking_dicts.append(row)
     return parking_dicts
 
-def narrow_down_data(parking_dicts):
+def la_narrow_down_data(parking_dicts):
     # Define the columns to keep (relevant columns)
     relevant_columns = ["BlockFace", "RateType", "RateRange"]  
     
@@ -26,10 +27,10 @@ def narrow_down_data(parking_dicts):
     
     return relevant_data
 
-def transform_data(relevant_data):
+def la_transform_data(relevant_data):
     "Transforming Rate Time data into average rates"
     for cut_dict in relevant_data:
-        rate = "Average Rate"
+        rate = "Rate"
         if cut_dict["RateType"] == "FLAT":
             cut_dict[rate] =  cut_dict["RateRange"]
         elif cut_dict["RateType"] == "TOD" and '-' in cut_dict["RateRange"]:
@@ -55,14 +56,14 @@ def transform_data(relevant_data):
     transform_data = relevant_data
     return transform_data
 
-def convert_average_rate_to_float(transformed_data):
+def la_convert_average_rate_to_float(transformed_data):
     for cut_dict in transformed_data:
-        if "Average Rate" in cut_dict:
+        if "Rate" in cut_dict:
             # Remove the dollar sign and convert to float
-            cut_dict["Average Rate"] = float(cut_dict["Average Rate"].lstrip('$'))
+            cut_dict["Rate"] = float(cut_dict["Rate"].lstrip('$'))
     return transformed_data
 
-def proper_names(transform_data):
+def la_proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
     for data in transform_data:
         data["City"] = "Los Angeles"
@@ -73,9 +74,17 @@ def proper_names(transform_data):
 
 if __name__ == "__main__":
     parking_data = LA_parking_data()
-    narrowed_data = narrow_down_data(parking_data)
-    transformed_data = transform_data(narrowed_data)
-    converted_data = convert_average_rate_to_float(transformed_data)
-    modified_data = proper_names(converted_data)
+    narrowed_data = la_narrow_down_data(parking_data)
+    transformed_data = la_transform_data(narrowed_data)
+    converted_data = la_convert_average_rate_to_float(transformed_data)
+    modified_data = la_proper_names(converted_data)
 
     print(modified_data)
+    new_csv_path = OUTPUT_PATH
+    fieldnames = ["City", "Street Address", "Rate"]  # Define the field names
+
+# Write the modified_data to a new CSV file
+    with open(new_csv_path, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(modified_data)

@@ -13,7 +13,7 @@ def load_SD_parking():
         parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+def SD_remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
     needed_data = ["OBJECTID", "STREET_NAME", "STREET_NUM", "OLD_RATE_AREA" ]
@@ -23,7 +23,7 @@ def remove_data(parking_dicts):
     cut_data = cleaned_dict
     return cut_data
 
-def transform_data(cut_data):
+def SD_transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour"""
     for cut_dict in cut_data:
         rate = "Average Rate"
