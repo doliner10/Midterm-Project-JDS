@@ -15,7 +15,7 @@ def load_SF_parking():
         parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+def SF_remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
@@ -24,7 +24,7 @@ def remove_data(parking_dicts):
     cut_data = cleaned_dict
     return cut_data
 
-def transform_data(cut_data):
+def SF_transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour"""
     for cut_dict in cut_data:
         rate = "Rate"
@@ -92,6 +92,7 @@ def write_data_to_CSV(final_data, path):
 
 # def rename_data(transform_data)
 #     SF_data = transform_data
+
 
 if __name__ == "__main__":
 
