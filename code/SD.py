@@ -48,6 +48,13 @@ def transform_data(cut_data):
         """Renames data to city data"""
         SD_data = proper_data
         return SD_data
+ def write_data_to_CSV(final_data, path):
+ """Writes data to a CSV"""
+    fieldname = ["City", "Street Address", "Rate"]
+    with open(path, 'w+') as file:
+        dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
+        dict_writer.writeheader()
+        dict_writer.writerows(final_data)
 
 
 if __name__ == "__main__":
