@@ -55,7 +55,6 @@ if __name__ == "__main__":
     transformed_data = indy_transform_data(narrowed_data)
     modified_data = indy_proper_names(transformed_data)
 
-    print(modified_data)
  
     new_csv_path = OUTPUT_PATH
 
