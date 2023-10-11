@@ -24,7 +24,7 @@ def load_SJ():
 
 def load_PHX():
     """Loads in PHX data"""
-    PHX_data = PHX_load_PHX_parking()
+    PHX_data = load_PHX_parking()
     cut_data = PHX_remove_data(SD_data)
     transform_data = PHX_transform_data(cut_data)
     PHX_data = PHX_rename_data(transform_data)
