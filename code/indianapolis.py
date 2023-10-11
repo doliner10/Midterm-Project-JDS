@@ -2,7 +2,7 @@ import csv
 import os
 import re
 
-INPUT_DIR = os.path.join("file")
+INPUT_DIR = os.path.join("../file")
 INDY_PATH = os.path.join(INPUT_DIR, "Indianapolis Parking Info.csv")
 OUTPUT_DIR = "artifacts"
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "Indianapolis")
@@ -15,7 +15,7 @@ def indy_parking_data():
         parking_dicts.append(row)
     return parking_dicts
 
-def narrow_down_data(parking_dicts):
+def indy_narrow_down_data(parking_dicts):
     # Define the columns to keep (relevant columns)
     relevant_columns = ["FULL_ADDRESS", "HOURLY_RATE"]  
     
@@ -26,7 +26,7 @@ def narrow_down_data(parking_dicts):
     
     return relevant_data
 
-def transform_data(relevant_data):
+def indy_transform_data(relevant_data):
     "Transforming Rate Time data into average rates"
     for cut_dict in relevant_data:
         rate = "Average Rate"
@@ -39,7 +39,7 @@ def transform_data(relevant_data):
     transform_data = relevant_data
     return transform_data
 
-def proper_names(transform_data):
+def indy_proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
     for data in transform_data:
         data["City"] = "Indianapolis"
@@ -50,8 +50,8 @@ def proper_names(transform_data):
 
 if __name__ == "__main__":
     parking_data = indy_parking_data()
-    narrowed_data = narrow_down_data(parking_data)
-    transformed_data = transform_data(narrowed_data)
-    modified_data = proper_names(transformed_data)
+    narrowed_data = indy_narrow_down_data(parking_data)
+    transformed_data = indy_transform_data(narrowed_data)
+    modified_data = indy_proper_names(transformed_data)
 
     print(modified_data)
