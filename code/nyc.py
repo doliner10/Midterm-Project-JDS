@@ -17,7 +17,7 @@ def load_NYC_parking():
             parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+def nyc_remove_data(parking_dicts):
     """""create a new dictionary"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
@@ -26,7 +26,7 @@ def remove_data(parking_dicts):
     cut_data = cleaned_dict
     return cut_data
 
-def calculate_average(cut_data):
+def nyc_calculate_average(cut_data):
     """"calculate average parking rate"""
     for cut_dict in cut_data:
         rate = "Average Rate"
@@ -74,6 +74,6 @@ def calculate_average(cut_data):
 if __name__ == "__main__":
 
     NYC_data = load_NYC_parking()
-    cut_data = remove_data(NYC_data)
-    transform_data = calculate_average(cut_data)
+    cut_data = nyc_remove_data(NYC_data)
+    transform_data = nyc_calculate_average(cut_data)
     print(transform_data)
