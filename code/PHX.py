@@ -13,7 +13,7 @@ def load_PHX_parking():
         parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+def PHX_remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     for park_dict in parking_dicts:
         del park_dict["\ufeffX"]
@@ -33,7 +33,7 @@ def remove_data(parking_dicts):
     cut_data = parking_dicts
     return cut_data
 
-def transform_data(cut_data):
+def PHX_transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour and returns the most common max time limit for each spot"""
     for cut_dict in cut_data:
         rate = "Average Rate"
@@ -52,7 +52,7 @@ def transform_data(cut_data):
     transform_data = cut_data
     return transform_data
 
-def proper_names(transform_data):
+def PHX_proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
     for data in transform_data:
         data["City"] = "Phoenix"
@@ -62,7 +62,7 @@ def proper_names(transform_data):
     proper_data = transform_data
     return proper_data
 
-def rename_data(proper_data):
+def PHX_rename_data(proper_data):
     """Renames data to city data"""
     PHX_data = proper_data
     return PHX_data
@@ -70,10 +70,10 @@ def rename_data(proper_data):
 if __name__ == "__main__":
 
     PHX_data = load_PHX_parking()
-    cut_data = remove_data(PHX_data)
-    transform_data = transform_data(cut_data)
-    proper_names = proper_names(transform_data)
-    rename_data = rename_data(proper_names)
+    cut_data = PHX_remove_data(PHX_data)
+    transform_data = PHX_transform_data(cut_data)
+    proper_names = PHX_proper_names(transform_data)
+    rename_data = PHX_rename_data(proper_names)
     PHX_data = rename_data
     print(PHX_data)
 
