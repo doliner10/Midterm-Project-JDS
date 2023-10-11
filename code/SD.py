@@ -45,7 +45,7 @@ def SD_transform_data(cut_data):
     return transform_data
 def SD_rename_data(transform_data):
      """Renames data to city data"""
-     SD_data = proper_data
+     SD_data = transform_data
      return SD_data
 
 
