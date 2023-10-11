@@ -17,7 +17,7 @@ CSV_PATH = os.path.join(BASE_DIR, "results.csv")
 
 def load_SJ():
     """Loads in SJ data"""
-    SJ_data = SJ_load_SJ_parking()
+    SJ_data = load_SJ_parking()
     cut_data = SJ_remove_data(SJ_data)
     transform_data = SJ_transform_data(cut_data)
     SJ_data = SJ_rename_data(transform_data)
