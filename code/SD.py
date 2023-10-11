@@ -43,15 +43,23 @@ def SD_transform_data(cut_data):
         del cut_dict["Rate Config"]
     transform_data = cut_data
     return transform_data
-def SD_rename_data(transform_data):
-     """Renames data to city data"""
-     SD_data = transform_data
-     return SD_data
+
+    def rename_data(transform_data)
+        """Renames data to city data"""
+        SD_data = proper_data
+        return SD_data
+ def write_data_to_CSV(final_data, path):
+ """Writes data to a CSV"""
+    fieldname = ["City", "Street Address", "Rate"]
+    with open(path, 'w+') as file:
+        dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
+        dict_writer.writeheader()
+        dict_writer.writerows(final_data)
 
 
 if __name__ == "__main__":
 
     SD_data = load_SD_parking()
-    cut_data = SD_remove_data(SD_data)
-    transform_data = SD_transform_data(cut_data)
-    SD_data = rename_data(transform_data)
+    cut_data = remove_data(SD_data)
+    transform_data = transform_data(cut_data)
+    write_data_to_CSV(transform_data, SD_OUT)
