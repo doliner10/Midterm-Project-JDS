@@ -20,7 +20,7 @@ def load_SJ():
     SJ_data = load_SJ_parking()
     cut_data = SJ_remove_data(SJ_data)
     transform_data = SJ_transform_data(cut_data)
-    SJ_data = SJ_rename_data(transform_data)
+    SJ_data = list(SJ_rename_data(transform_data))
 
 def load_PHX():
     """Loads in PHX data"""
@@ -82,6 +82,7 @@ def write_data_to_CSV(final_data, path):
     return
 
 if __name__ == "__main__":
+    combined_data = list()
     SJ_data = load_SJ()
     PHX_data = load_PHX()
     SF_data = load_SF()
@@ -90,6 +91,7 @@ if __name__ == "__main__":
     Charlotte_data = load_Charlotte()
     Indianapolis_data = load_Indianapolis()
     LA_data = load_LA()
+    print(SJ_data)
     combined_data = SJ_data + SF_data + PHX_data + SD_data + Charlotte_data + NYC_data + Indianapolis_data + LA_data
     final_data = sort_data(combined_data)
     write_data_to_CSV(final_data, CSV_PATH)

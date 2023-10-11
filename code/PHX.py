@@ -36,7 +36,7 @@ def PHX_remove_data(parking_dicts):
 def PHX_transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour and returns the most common max time limit for each spot"""
     for cut_dict in cut_data:
-        rate = "Average Rate"
+        rate = "Rate"
         time = "Max Hours"
         if cut_dict["RateTimeLimits"] == "$1.00/hr 1hr 8A-10P Mon-Fri" or "$1.00/hr 2hr 8A-10P Mon-Fri" or "$1.00/hr 2hr 8A-10P Mon-Fri" or "$1.00/hr 30min 8A-10P Mon-Fri" or "$1.00/hr 4hr 8A-10P Mon-Fri" or "$1.00/hr 8hr 8A-10P Mon-Fri":
             cut_dict[rate] =  float(1.00)

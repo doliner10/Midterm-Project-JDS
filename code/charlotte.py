@@ -17,7 +17,7 @@ def load_Charlotte_parking():
     return parking_dicts
 
 
-    def charlotte_remove_data(parking_dicts)
+def charlotte_remove_data(parking_dicts):
     """""create a new dictionary"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
