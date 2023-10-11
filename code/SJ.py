@@ -15,7 +15,7 @@ def load_SJ_parking():
         parking_dicts.append(row)
     return parking_dicts
 
-def remove_data(parking_dicts):
+def SJ_remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
@@ -24,7 +24,7 @@ def remove_data(parking_dicts):
     cut_data = cleaned_dict
     return cut_data
 
-def transform_data(cut_data):
+def SJ_transform_data(cut_data):
     """Transforms RateTime values to average rate in $ per hour"""
     for cut_dict in cut_data:
         rate = "Rate"
@@ -45,15 +45,10 @@ def write_data_to_CSV(final_data, path):
         dict_writer.writeheader()
         dict_writer.writerows(final_data)
 
-# def rename_data(transform_data)
-#     """Renames list to San Jose"""
-#     SJ_data = transform_data
-
 
 if __name__ == "__main__":
 
     SJ_data = load_SJ_parking()
     cut_data = remove_data(SJ_data)
     transform_data = transform_data(cut_data)
-    #SJ_data = rename_data(transform_data)
     write_data_to_CSV(transform_data, SJ_OUT)
