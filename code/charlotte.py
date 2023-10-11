@@ -17,24 +17,26 @@ def load_Charlotte_parking():
     return parking_dicts
 
 
-def charlotte_remove_data(parking_dicts):
+def remove_data(parking_dicts):
     """""create a new dictionary"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
         new_dict = {"Street Address": park_dict["WHOLESTNAME"], "Rate": float(1.25), "City": "Charlotte"}
         cleaned_dict.append(new_dict)
-    return charlotte_remove_data
+    #cut_data = cleaned_dict
+    return cleaned_dict
 
 def charlotte_write_data_to_CSV(charlotte_remove_data, OUTPUT_PATH):
-    """Writes data to a CSV"""
-    fieldname = ["City", "Street Address", "Rate"]
-    with open(OUTPUT_PATH, 'w+', newline='') as file:
-        dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
-        dict_writer.writeheader()
-        dict_writer.writerows(charlotte_remove_data)
+     """Writes data to a CSV"""
+     fieldname = ["City", "Street Address", "Rate"]
+     with open(OUTPUT_PATH, 'w+', newline='') as file:
+         dict_writer = csv.DictWriter(f = file, fieldnames = fieldname)
+         dict_writer.writeheader()
+         dict_writer.writerows(charlotte_remove_data)
 
 if __name__ == "__main__":
 
     Charlotte_data = load_Charlotte_parking()
-    Charlotte_data_parking = charlotte_remove_data(Charlotte_data)
-    charlotte_write_data_to_CSV(Charlotte_data_parking, OUTPUT_PATH)
+    cut_data = remove_data(Charlotte_data)
+    charlotte_write_data_to_CSV(cut_data, OUTPUT_PATH)
+    #print(cut_data)
