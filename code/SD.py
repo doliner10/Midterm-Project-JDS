@@ -62,4 +62,4 @@ if __name__ == "__main__":
     SD_data = load_SD_parking()
     cut_data = remove_data(SD_data)
     transform_data = transform_data(cut_data)
-    SD_data = rename_data(transform_data)
+    write_data_to_CSV(transform_data, SD_OUT)
