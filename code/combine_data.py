@@ -20,33 +20,31 @@ def load_SJ():
     SJ_data = load_SJ_parking()
     cut_data = SJ_remove_data(SJ_data)
     transform_data = SJ_transform_data(cut_data)
-    SJ_data = SJ_rename_data(transform_data)
+    
 
 def load_PHX():
     """Loads in PHX data"""
     PHX_data = load_PHX_parking()
     cut_data = PHX_remove_data(PHX_data)
     transform_data = PHX_transform_data(cut_data)
-    PHX_data = PHX_rename_data(transform_data)
+
 
 def load_SF():
     """Loads in SF data"""
     SF_data = load_SF_parking()
     cut_data = SF_remove_data(SF_data)
     transform_data = SF_transform_data(cut_data)
-    SF_data = SF_rename_data(transform_data)
 
 def load_SD():
     """Loads in SD data"""
     SD_data = load_SD_parking()
     cut_data = SD_remove_data(SD_data)
     transform_data = SD_transform_data(cut_data)
-    SD_data = SD_rename_data(transform_data)
 def load_nyc():
     """Loads NYC data"""
     NYC_data = load_NYC_parking()
     cut_data = nyc_remove_data(NYC_data)
-    NYC_data = nyc_calculate_average(cut_data)
+    
 def load_Charlotte():
     """Loads Charlotte data"""
     Charlotte_data = load_Charlotte_parking()
@@ -56,14 +54,14 @@ def load_Indianapolis():
     parking_data = indy_parking_data()
     narrowed_data = indy_narrow_down_data(parking_data)
     transformed_data = indy_transform_data(narrowed_data)
-    Indianapolis_data = indy_proper_names(transformed_data)
+    
 def load_LA():
     """Loads in LA data"""
     parking_data = LA_parking_data()
     narrowed_data = la_narrow_down_data(parking_data)
     transformed_data = la_transform_data(narrowed_data)
     converted_data = la_convert_average_rate_to_float(transformed_data)
-    LA_data = la_proper_names(converted_data)
+    
 
 
 def sort_data(combined_data):
@@ -91,7 +89,6 @@ if __name__ == "__main__":
     Charlotte_data = load_Charlotte()
     Indianapolis_data = load_Indianapolis()
     LA_data = load_LA()
-    print(SJ_data)
     combined_data = SJ_data + SF_data + PHX_data + SD_data + Charlotte_data + NYC_data + Indianapolis_data + LA_data
     final_data = sort_data(combined_data)
     write_data_to_CSV(final_data, CSV_PATH)
