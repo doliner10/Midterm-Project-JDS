@@ -55,7 +55,3 @@ if __name__ == "__main__":
     SJ_data = SJ_rename_data(transform_data)
     print(transform_data)
 =======
-    cut_data = remove_data(SJ_data)
-    transform_data = transform_data(cut_data)
-    write_data_to_CSV(transform_data, SJ_OUT)
->>>>>>> 69449104fb8e10c38120ff01a6d1cbfc1abab0df
