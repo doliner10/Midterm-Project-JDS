@@ -5,7 +5,8 @@ import re
 INPUT_DIR = os.path.join("../file")
 INDY_PATH = os.path.join(INPUT_DIR, "Indianapolis Parking Info.csv")
 OUTPUT_DIR = "artifacts"
-OUTPUT_PATH = os.path.join(OUTPUT_DIR, "Indianapolis")
+OUTPUT_FILENAME = "Indianapolis.csv"
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, OUTPUT_FILENAME)
 
 def indy_parking_data():
     parking_dicts = list()
@@ -29,7 +30,7 @@ def indy_narrow_down_data(parking_dicts):
 def indy_transform_data(relevant_data):
     "Transforming Rate Time data into average rates"
     for cut_dict in relevant_data:
-        rate = "Average Rate"
+        rate = "Rate"
         if cut_dict["HOURLY_RATE"] == "1.5" or "1.50":
             cut_dict[rate] =  "1.50"
         if cut_dict["HOURLY_RATE"] == "1" or "1.0":
@@ -55,3 +56,12 @@ if __name__ == "__main__":
     modified_data = indy_proper_names(transformed_data)
 
     print(modified_data)
+ 
+    new_csv_path = OUTPUT_PATH
+
+    fieldnames = ["City", "Street Address", "Rate"]
+# Write the modified_data to a new CSV file
+    with open(new_csv_path, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(modified_data) 
