@@ -1,11 +1,8 @@
 import csv 
 import os
-import re
 
 INPUT_DIR = os.path.join("../file")
 SJ_PATH = os.path.join(INPUT_DIR, "San Jose Parking.csv")
-OUTPUT_DIR = "artifacts"
-OUTPUT_PATH = os.path.join(OUTPUT_DIR, "SJ")
 
 def load_SJ_parking():
     """"Loads the CSV of SJ parking data as a list of dictionaries"""
