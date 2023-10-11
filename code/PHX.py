@@ -15,7 +15,6 @@ def load_PHX_parking():
 
 def remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
-    #unneeded_data = ['\ufeffX', 'Y', 'OBJECTID', 'METER_NUMBER', 'METER_TYPE', 'STATUS', 'HC_METER', 'BIKERACK', 'DUAL_HEAD', 'COMMENTS', 'strSegmentID', 'GlobalID']
     for park_dict in parking_dicts:
         del park_dict["\ufeffX"]
         del park_dict["Y"]
@@ -31,9 +30,6 @@ def remove_data(parking_dicts):
         del park_dict["AssetID"]
         del park_dict["strSegmentID"]
         del park_dict["MOTORCYCLE_METER"]
-        # for data in unneeded_data:
-        #     if data in parking_dicts:
-        #         del parking_dicts[data]
     cut_data = parking_dicts
     return cut_data
 
