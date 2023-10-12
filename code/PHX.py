@@ -79,9 +79,9 @@ def write_data_to_CSV(final_data, path):
 if __name__ == "__main__":
 
     PHX_data = load_PHX_parking()
-    cut_data = remove_data(PHX_data)
-    transform_data = transform_data(cut_data)
-    proper_names = proper_names(transform_data)
+    cut_data = PHX_remove_data(PHX_data)
+    transform_data = PHX_transform_data(cut_data)
+    proper_names = PHX_proper_names(transform_data)
     #rename_data = rename_data(proper_names)
     write_data_to_CSV(proper_names, PHX_OUT)
     # PHX_data = rename_data
