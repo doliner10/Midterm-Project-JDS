@@ -3,7 +3,6 @@ import os
 import matplotlib.pyplot as plt
 
 
-parking_data = pd.DataFrame()
 data_dir = os.path.join("../artifacts")
 OUTPUT_PATH = os.path.join(data_dir, "combined_results.csv")
 PHX_file = os.path.join(data_dir, "Phoenix_results.csv")
@@ -11,23 +10,46 @@ SJ_file = os.path.join(data_dir, "SJ_results.csv")
 SD_file = os.path.join(data_dir, "SD_results.csv")
 SF_file = os.path.join(data_dir, "SF_results.csv")
 Charlotte_file = os.path.join(data_dir, "Charlotte.csv")
-NYC_file = os.path.join(data_dir, "SF_results.csv")
+NYC_file = os.path.join(data_dir, "NYC.csv")
 LA_file = os.path.join(data_dir, "Los Angeles.csv")
 Indianapolis_file = os.path.join(data_dir, "Indianapolis.csv")
+figure_path = os.path.join("../analysis")
 
-data_files = [PHX_file, SJ_file, SD_file, SF_file]
-for file in data_files:
-    df = pd.read_csv(file)
-    parking_data = pd.concat([parking_data, df], ignore_index=True)
+parking_data = pd.DataFrame()
+def combine_data():
+    """Combines all CSVs into a single file"""
+    parking_data = pd.DataFrame()
+    data_files = [PHX_file, SJ_file, SD_file, SF_file, Charlotte_file, NYC_file, LA_file, Indianapolis_file]
+    for file in data_files:
+        df = pd.read_csv(file)
+        parking_data = pd.concat([parking_data, df], ignore_index=True)
+    parking_data.to_csv(OUTPUT_PATH, index=False)
+    return parking_data
 
-parking_data.to_csv(OUTPUT_PATH, index=False)
+def results_analysis(df):
+    """Analyses results and returns the count of kiosks/meters in each city and average parking rate"""
+    df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
+    city = df.groupby('City')
+    count_city = city["Rate"].count()
+    rate_city = city["Rate"].mean()
+    analysisdf = pd.DataFrame({"City": count_city.index, "City Count":count_city.values, "Rate": rate_city.values})
+    analysis.to_csv(os.path.join(figure_path, "analysis.csv"))
+    return
 
-city_counts = parking_data["City"].value_counts()
-city_counts.plot(kind='bar')
-plt.xlabel('City')
-plt.ylabel('Number of parking meters/kiosks')
-plt.title('Number of parking meters/kiosks by city')
-save_path = os.path.join
+def make_city_bar():
+    """Makes bar graph of count of kiosks/meters by city"""
+    city_counts = parking_data["City"].value_counts()
+    city_counts.plot(kind='bar')
+    plt.xlabel('City')
+    plt.ylabel('Number of parking meters/kiosks')
+    plt.title('Number of parking meters/kiosks by city')
+    save_path = os.path.join(figure_path, "cityplot.png")
+    return
+if __name__ == "__main__":
+    parking_data = combine_data()
+    print(parking_data["Rate"].dtype)
+    results_analysis(parking_data)
+    make_city_bar()
 
 
 # import CSV
