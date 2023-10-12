@@ -23,7 +23,6 @@ def remove_data(parking_dicts):
     for park_dict in parking_dicts:
         new_dict = {"Street Address": park_dict["WHOLESTNAME"], "Rate": float(1.25), "City": "Charlotte"}
         cleaned_dict.append(new_dict)
-    #cut_data = cleaned_dict
     return cleaned_dict
 
 def charlotte_write_data_to_CSV(charlotte_remove_data, OUTPUT_PATH):
@@ -39,4 +38,3 @@ if __name__ == "__main__":
     Charlotte_data = load_Charlotte_parking()
     cut_data = remove_data(Charlotte_data)
     charlotte_write_data_to_CSV(cut_data, OUTPUT_PATH)
-    #print(cut_data)
