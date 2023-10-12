@@ -50,8 +50,11 @@ def make_avg_bar(df):
     plt.ylabel("Avg Rate (in $/hr)")
     plt.xticks(rotation=45)
     plt.savefig(os.path.join(figure_path, "rate_graph.png"))
-    
-    return
+def mak_pop_df(path):
+    """"Makes pop data into a dataframe"""
+    popdf = pd.read_csv(path)
+    return popdf
+def merge_
 if __name__ == "__main__":
     parking_data = combine_data()
     analysisdf = results_analysis(parking_data)
