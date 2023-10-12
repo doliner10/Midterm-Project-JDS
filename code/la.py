@@ -66,7 +66,7 @@ def la_convert_average_rate_to_float(transformed_data):
 def la_proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
     for data in transform_data:
-        data["City"] = "Los Angeles"
+        data["City"] = "LA"
         if "BlockFace" in data:
             data["Street Address"] = data["BlockFace"]
             del data["BlockFace"]
