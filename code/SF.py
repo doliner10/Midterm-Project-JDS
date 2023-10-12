@@ -90,9 +90,6 @@ def write_data_to_CSV(final_data, path):
         dict_writer.writeheader()
         dict_writer.writerows(final_data)
 
-# def rename_data(transform_data)
-#     SF_data = transform_data
-
 
 if __name__ == "__main__":
 
@@ -100,6 +97,5 @@ if __name__ == "__main__":
     cut_data = remove_data(SF_data)
     transform_data = transform_data(cut_data)
     write_data_to_CSV(transform_data, SF_OUT)
-    #SF_Data = rename_data(transform_data)
     
     
