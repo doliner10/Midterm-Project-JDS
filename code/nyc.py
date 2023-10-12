@@ -84,5 +84,5 @@ if __name__ == "__main__":
     NYC_data = load_NYC_parking()
     cut_data = nyc_remove_data(NYC_data)
     transform_data = nyc_calculate_average(cut_data)
-    print(transform_data)
+    #print(transform_data)
     nyc_write_data_to_CSV(transform_data, OUTPUT_PATH)
