@@ -63,10 +63,6 @@ def PHX_proper_names(transform_data):
     return proper_data
 
 
-# def rename_data(proper_data):
-#     """Renames data to city data"""
-#     PHX_data = proper_data
-#     return PHX_data
 def write_data_to_CSV(final_data, path):
     """Writes data to a CSV"""
     fieldname = ["City", "Street Address", "Rate"]
@@ -82,8 +78,6 @@ if __name__ == "__main__":
     cut_data = remove_data(PHX_data)
     transform_data = transform_data(cut_data)
     proper_names = proper_names(transform_data)
-    #rename_data = rename_data(proper_names)
     write_data_to_CSV(proper_names, PHX_OUT)
-    # PHX_data = rename_data
  
 
