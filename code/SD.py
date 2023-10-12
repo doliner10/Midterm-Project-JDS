@@ -48,7 +48,7 @@ def SD_transform_data(cut_data):
         """Renames data to city data"""
         SD_data = proper_data
         return SD_data
- def write_data_to_CSV(final_data, path):
+def write_data_to_CSV(final_data, path):
  """Writes data to a CSV"""
     fieldname = ["City", "Street Address", "Rate"]
     with open(path, 'w+') as file:
@@ -60,6 +60,6 @@ def SD_transform_data(cut_data):
 if __name__ == "__main__":
 
     SD_data = load_SD_parking()
-    cut_data = remove_data(SD_data)
-    transform_data = transform_data(cut_data)
-    write_data_to_CSV(transform_data, SD_OUT)
+    cut_data = SD_remove_data(SD_data)
+    transform_data = SD_transform_data(cut_data)
+    SD_data = rename_data(transform_data)
