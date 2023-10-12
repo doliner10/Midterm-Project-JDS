@@ -51,5 +51,5 @@ if __name__ == "__main__":
     SJ_data = load_SJ_parking()
     cut_data = SJ_remove_data(SJ_data)
     transform_data = SJ_transform_data(cut_data)
-    SJ_data = SJ_rename_data(transform_data)
-    print(transform_data)
+    write_data_to_CSV(transform_data, SJ_OUT)
+    
