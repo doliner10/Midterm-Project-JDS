@@ -1,11 +1,11 @@
 
 
 # _Parking Meters By City_
-# _Comparing the number of meters and average rates across U.S. cities_
+**Comparing the number of meters and average rates across U.S. cities**
 
-October 12th, 2023
+**October 12th, 2023**
 
-Jacob McGill, Shuting Yao, Daniel Oliner 
+**Jacob McGill, Shuting Yao, Daniel Oliner**
 
 # Introduction:
 This project analyzes the number of parking meters and average rates across a sample of several U.S. cities. In this analysis, we’ve selected a sample of eight cities, representing varying populations and geographic regions. The goal is to compare the amount of parking kiosks and meters between cities, as well as the average cost of parking between cities. 
@@ -13,14 +13,7 @@ This project analyzes the number of parking meters and average rates across a sa
 # Sources of Data: 
 Data used in this analysis was sourced from each respective official city government website, where parking and transportation data was publicly available (we uploaded the relevant data for each city into the /file directory).  The final list of cities considered were: 
 
-New York City
-Los Angeles
-San Francisco
-Charlotte
-Phoenix
-Indianapolis
-San Diego
-San Jose
+New York City, Los Angeles, San Francisco, Charlotte, Phoenix, Indianapolis, San Diego, San Jose.
 
 These cities were selected because they had the highest population in 2022 as estimated by the U.S. Census Bureau and provided public data on parking kiosks. Only eight cities have been considered here but a more comprehensive analysis could be conducted by including a larger sample of U.S. cities with a greater range in populations, or by considering other factors that may affect parking meter availability and rates. But given limitations in the availability of data and the time constraint, we elected to focus our efforts on these eight cities and their populations for simplicity. 
 
