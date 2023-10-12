@@ -21,7 +21,7 @@ def remove_data(parking_dicts):
     """""create a new dictionary"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
-        new_dict = {"Street Address": park_dict["WHOLESTNAME"], "Rate": float(1.25), "City": "Charlotte"}
+        new_dict = {"Street Address": park_dict["WHOLESTNAME"], "Rate": float(1.25), "City": "CHA"}
         cleaned_dict.append(new_dict)
     return cleaned_dict
 
