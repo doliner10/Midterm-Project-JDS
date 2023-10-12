@@ -6,7 +6,7 @@ INPUT_DIR = os.path.join("../file")
 LA_PATH = os.path.join(INPUT_DIR, "LA Parking Info.csv")
 OUTPUT_DIR = "artifacts"
 OUTPUT_FILENAME = "Los Angeles.csv"
-OUTPUT_PATH = os.path.join(OUTPUT_DIR, OUTPUT_FILENAME)
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, "Los Angeles.csv")
 
 def LA_parking_data():
     parking_dicts = list()
