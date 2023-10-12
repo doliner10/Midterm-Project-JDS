@@ -21,7 +21,7 @@ def nyc_remove_data(parking_dicts):
     """""create a new dictionary"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
-        new_dict = {"Street Address": park_dict["On_Street"], "Average Rate": park_dict["All_Vehi_2"], "City": "New York City"}
+        new_dict = {"Street Address": park_dict["On_Street"], "Average Rate": park_dict["All_Vehi_2"], "City": "NYC"}
         cleaned_dict.append(new_dict)
     cut_data = cleaned_dict
     return cut_data
