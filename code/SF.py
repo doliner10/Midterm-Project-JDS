@@ -63,7 +63,7 @@ def SF_transform_data(cut_data):
         if cut_dict["RATE AREA"] ==  "Port 7":
             cut_dict[rate] = float(3.00)
         if cut_dict["RATE AREA"] ==  "Port 8":
-            cut_dict[rate] = "$3.00"
+            cut_dict[rate] = float(3.00)
         if cut_dict["RATE AREA"] ==  "Port 9":
             cut_dict[rate] = float(1.00)
         if cut_dict["RATE AREA"] ==  "Port 10":
@@ -71,7 +71,7 @@ def SF_transform_data(cut_data):
         if cut_dict["RATE AREA"] ==  "Port 11":
             cut_dict[rate] = float(1.00)
         if cut_dict["RATE AREA"] ==  "Port 12":
-            cut_dict[rate] = "$1.00"
+            cut_dict[rate] = float(1.00)
         if cut_dict["RATE AREA"] ==  "PortMC1":
             cut_dict[rate] = float(0.25)
         if cut_dict["RATE AREA"] ==  "PortMC2":
@@ -97,8 +97,8 @@ def write_data_to_CSV(final_data, path):
 if __name__ == "__main__":
 
     SF_data = load_SF_parking()
-    cut_data = remove_data(SF_data)
-    transform_data = transform_data(cut_data)
+    cut_data = SF_remove_data(SF_data)
+    transform_data = SF_transform_data(cut_data)
     write_data_to_CSV(transform_data, SF_OUT)
     #SF_Data = rename_data(transform_data)
     
