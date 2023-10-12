@@ -97,8 +97,8 @@ def write_data_to_CSV(final_data, path):
 if __name__ == "__main__":
 
     SF_data = load_SF_parking()
-    cut_data = remove_data(SF_data)
-    transform_data = transform_data(cut_data)
+    cut_data = SF_remove_data(SF_data)
+    transform_data = SF_transform_data(cut_data)
     write_data_to_CSV(transform_data, SF_OUT)
     #SF_Data = rename_data(transform_data)
     
