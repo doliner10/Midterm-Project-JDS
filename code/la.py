@@ -79,7 +79,7 @@ if __name__ == "__main__":
     converted_data = la_convert_average_rate_to_float(transformed_data)
     modified_data = la_proper_names(converted_data)
 
-    print(modified_data)
+
     new_csv_path = OUTPUT_PATH
     fieldnames = ["City", "Street Address", "Rate"]  # Define the field names
 
