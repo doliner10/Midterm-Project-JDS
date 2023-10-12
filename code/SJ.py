@@ -49,9 +49,7 @@ def write_data_to_CSV(final_data, path):
 if __name__ == "__main__":
 
     SJ_data = load_SJ_parking()
-<<<<<<< HEAD
     cut_data = SJ_remove_data(SJ_data)
     transform_data = SJ_transform_data(cut_data)
     SJ_data = SJ_rename_data(transform_data)
     print(transform_data)
-=======
