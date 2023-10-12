@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 
 data_dir = os.path.join("../artifacts")
+pop_dir = os.path.join("../file")
+pop_file = os.path.join(pop_dir, "Census Bureau 2022 Pop Estimates.csv")
 OUTPUT_PATH = os.path.join(data_dir, "combined_results.csv")
 PHX_file = os.path.join(data_dir, "Phoenix_results.csv")
 SJ_file = os.path.join(data_dir, "SJ_results.csv")
@@ -28,7 +30,6 @@ def combine_data():
 
 def results_analysis(df):
     """Analyses results and returns the count of kiosks/meters in each city and average parking rate"""
-    #df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
     city = df.groupby('City')
     count_city = city["City"].count()
     rate_city = city["Rate"].mean()
