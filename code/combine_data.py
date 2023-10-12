@@ -9,7 +9,6 @@ pop_file = os.path.join(pop_dir, "Census Bureau 2022 Pop Estimates.csv")
 OUTPUT_PATH = os.path.join(data_dir, "combined_results.csv")
 PHX_file = os.path.join(data_dir, "Phoenix_results.csv")
 SJ_file = os.path.join(data_dir, "SJ_results.csv")
-SD_file = os.path.join(data_dir, "SD_results.csv")
 SF_file = os.path.join(data_dir, "SF_results.csv")
 Charlotte_file = os.path.join(data_dir, "Charlotte.csv")
 NYC_file = os.path.join(data_dir, "NYC.csv")
@@ -21,7 +20,7 @@ parking_data = pd.DataFrame()
 def combine_data():
     """Combines all CSVs into a single file"""
     parking_data = pd.DataFrame()
-    data_files = [PHX_file, SJ_file, SD_file, SF_file, Charlotte_file, NYC_file, LA_file, Indianapolis_file]
+    data_files = [PHX_file, SJ_file, SF_file, Charlotte_file, NYC_file, LA_file, Indianapolis_file]
     for file in data_files:
         df = pd.read_csv(file)
         parking_data = pd.concat([parking_data, df], ignore_index=True)
