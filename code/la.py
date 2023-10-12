@@ -4,7 +4,7 @@ import re
 
 INPUT_DIR = os.path.join("../file")
 LA_PATH = os.path.join(INPUT_DIR, "LA Parking Info.csv")
-OUTPUT_DIR = "artifacts"
+OUTPUT_DIR = "../artifacts"
 OUTPUT_FILENAME = "Los Angeles.csv"
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "Los Angeles.csv")
 
