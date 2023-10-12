@@ -18,7 +18,7 @@ def SD_remove_data(parking_dicts):
     cleaned_dict = list()
     needed_data = ["OBJECTID", "STREET_NAME", "STREET_NUM", "OLD_RATE_AREA" ]
     for park_dict in parking_dicts:
-        new_dict = {"Street Address": park_dict["sub_area"], "Rate Config": park_dict["config_name"], "City": "San Diego"}
+        new_dict = {"Street Address": park_dict["sub_area"], "Rate Config": park_dict["config_name"], "City": "SD"}
         cleaned_dict.append(new_dict)
     cut_data = cleaned_dict
     return cut_data
