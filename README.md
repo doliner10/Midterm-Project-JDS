@@ -2,7 +2,7 @@
 # _Parking Meters By City_
 Comparing the number of meters and average rates across U.S. cities
 
-**October 12th, 2023
+October 12th, 2023
 Python, Big Data, and Databases (ECO395m)
 
 Jacob McGill, Shuting Yao, Daniel Oliner **
