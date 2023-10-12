@@ -19,7 +19,7 @@ def SJ_remove_data(parking_dicts):
     """Removes unnecessary data from parking data"""
     cleaned_dict = list()
     for park_dict in parking_dicts:
-        new_dict = {"Street Address": park_dict["METERADDRESS"], "Average_Rate": park_dict["PARKINGRATE"], "City": "San Jose"}
+        new_dict = {"Street Address": park_dict["METERADDRESS"], "Average_Rate": park_dict["PARKINGRATE"], "City": "SJ"}
         cleaned_dict.append(new_dict)
     cut_data = cleaned_dict
     return cut_data
