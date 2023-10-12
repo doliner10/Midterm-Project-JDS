@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 import matplotlib.pyplot as plt
 
 
@@ -9,20 +10,24 @@ PHX_file = os.path.join(data_dir, "Phoenix_results.csv")
 SJ_file = os.path.join(data_dir, "SJ_results.csv")
 SD_file = os.path.join(data_dir, "SD_results.csv")
 SF_file = os.path.join(data_dir, "SF_results.csv")
+Charlotte_file = os.path.join(data_dir, "Charlotte.csv")
+NYC_file = os.path.join(data_dir, "SF_results.csv")
+LA_file = os.path.join(data_dir, "Los Angeles.csv")
+Indianapolis_file = os.path.join(data_dir, "Indianapolis.csv")
 
-data_files = [Phoenix_file, SJ_file, SD_file, SF_file]
+data_files = [PHX_file, SJ_file, SD_file, SF_file]
 for file in data_files:
     df = pd.read_csv(file)
     parking_data = pd.concat([parking_data, df], ignore_index=True)
 
-parking_data.to_csv(OUTPUTH_PATH, index=False)
+parking_data.to_csv(OUTPUT_PATH, index=False)
 
 city_counts = parking_data["City"].value_counts()
 city_counts.plot(kind='bar')
 plt.xlabel('City')
 plt.ylabel('Number of parking meters/kiosks')
 plt.title('Number of parking meters/kiosks by city')
-plt.show()
+save_path = os.path.join
 
 
 # import CSV
