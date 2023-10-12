@@ -28,15 +28,15 @@ def combine_data():
 
 def results_analysis(df):
     """Analyses results and returns the count of kiosks/meters in each city and average parking rate"""
-    df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
+    #df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
     city = df.groupby('City')
     count_city = city["Rate"].count()
     rate_city = city["Rate"].mean()
     analysisdf = pd.DataFrame({"City": count_city.index, "City Count":count_city.values, "Rate": rate_city.values})
-    analysis.to_csv(os.path.join(figure_path, "analysis.csv"))
+    analysisdf.to_csv(os.path.join(figure_path, "analysis.csv"))
     return
 
-def make_city_bar():
+def make_city_bar(parking_data):
     """Makes bar graph of count of kiosks/meters by city"""
     city_counts = parking_data["City"].value_counts()
     city_counts.plot(kind='bar')
@@ -47,9 +47,8 @@ def make_city_bar():
     return
 if __name__ == "__main__":
     parking_data = combine_data()
-    print(parking_data["Rate"].dtype)
     results_analysis(parking_data)
-    make_city_bar()
+    make_city_bar(parking_data)
 
 
 # import CSV
