@@ -55,7 +55,7 @@ def PHX_transform_data(cut_data):
 def PHX_proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
     for data in transform_data:
-        data["City"] = "Phoenix"
+        data["City"] = "PHX"
         if "StreetAddress" in data:
             data["Street Address"] = data["StreetAddress"]
             del data["StreetAddress"]
