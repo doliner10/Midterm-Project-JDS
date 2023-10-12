@@ -41,7 +41,4 @@ Our analysis provided the following results:
 
 
 
-As can be seen, San Francisco and Los Angeles had the highest number of parking meters/kiosks of the 8 cities analyzed, with New York and San Diego coming in 3rd and 4th. We also compared average parking rates.
-
-
-There is less spread in the average of parking meter rates. New York has the highest average rate, followed by San Francisco. Given the high cost of living in New York coupled with the relatively scarce parking availability in the previous graph, it is unsurprising that New York has the highest average rate. 
+As can be seen, San Francisco and Los Angeles had the highest number of parking meters/kiosks of the 8 cities analyzed, with New York and San Diego coming in 3rd and 4th. We also compared average parking rates. There is less spread in the average of parking meter rates. New York has the highest average rate, followed by San Francisco. Given the high cost of living in New York coupled with the relatively scarce parking availability in the previous graph, it is unsurprising that New York has the highest average rate. 
