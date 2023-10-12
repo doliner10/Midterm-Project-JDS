@@ -13,7 +13,7 @@ This project analyzes the number of parking meters and average rates across a sa
 # Sources of Data: 
 Data used in this analysis was sourced from each respective official city government website, where parking and transportation data was publicly available (we uploaded the relevant data for each city into the /file directory).  The final list of cities considered were: 
 
-New York City, Los Angeles, San Francisco, Charlotte, Phoenix, Indianapolis, San Diego, San Jose.
+New York City, Los Angeles, San Francisco, Charlotte, Phoenix, Indianapolis, San Jose.
 
 These cities were selected because they had the highest population in 2022 as estimated by the U.S. Census Bureau and provided public data on parking kiosks. Only eight cities have been considered here but a more comprehensive analysis could be conducted by including a larger sample of U.S. cities with a greater range in populations, or by considering other factors that may affect parking meter availability and rates. But given limitations in the availability of data and the time constraint, we elected to focus our efforts on these eight cities and their populations for simplicity. 
 
@@ -41,4 +41,4 @@ Our analysis provided the following results:
 
 
 
-As can be seen, San Francisco and Los Angeles had the highest number of parking meters/kiosks of the 8 cities analyzed, with New York and San Diego coming in 3rd and 4th. We also compared average parking rates. There is less spread in the average of parking meter rates. New York has the highest average rate, followed by San Francisco. Given the high cost of living in New York coupled with the relatively scarce parking availability in the previous graph, it is unsurprising that New York has the highest average rate. 
+As can be seen, San Francisco and Los Angeles had the highest number of parking meters/kiosks of the 8 cities analyzed, with New York coming in third. We also compared average parking rates. There is less spread in the average of parking meter rates. New York has the highest average rate, followed by San Francisco. Given the high cost of living in New York coupled with the relatively scarce parking availability in the previous graph, it is unsurprising that New York has the highest average rate. 
