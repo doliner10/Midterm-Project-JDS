@@ -43,7 +43,7 @@ def indy_transform_data(relevant_data):
 def indy_proper_names(transform_data):
     """Creates new keys with proper names for remaining data and adds city key-value"""
     for data in transform_data:
-        data["City"] = "Indianapolis"
+        data["City"] = "INDY"
         if "FULL_ADDRESS" in data:
             data["Street Address"] = data["FULL_ADDRESS"]
             del data["FULL_ADDRESS"]
