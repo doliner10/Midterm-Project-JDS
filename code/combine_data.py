@@ -30,11 +30,11 @@ def results_analysis(df):
     """Analyses results and returns the count of kiosks/meters in each city and average parking rate"""
     #df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
     city = df.groupby('City')
-    count_city = city["Rate"].count()
+    count_city = city["City"].count()
     rate_city = city["Rate"].mean()
     analysisdf = pd.DataFrame({"City": count_city.index, "City Count":count_city.values, "Rate": rate_city.values})
     analysisdf.to_csv(os.path.join(figure_path, "analysis.csv"))
-    return
+    return analysisdf
 
 def make_city_bar(parking_data):
     """Makes bar graph of count of kiosks/meters by city"""
