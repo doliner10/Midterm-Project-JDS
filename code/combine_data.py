@@ -43,7 +43,7 @@ def make_city_bar(df):
     plt.xlabel("City")
     plt.ylabel("Meter Count")
     plt.savefig(os.path.join(figure_path, "count_graph.png"))
-    plt.xticks(rotation=45)
+    #plt.xticks(font=5)
 def make_avg_bar(df):
     df.plot.bar(x = "City", y = "Avg Rate", title = "Average parking meter rate by city")
     plt.xlabel("City")
