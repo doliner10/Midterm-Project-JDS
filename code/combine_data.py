@@ -28,28 +28,44 @@ def combine_data():
 
 def results_analysis(df):
     """Analyses results and returns the count of kiosks/meters in each city and average parking rate"""
-    df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
+    #df["Rate"] = pd.to_numeric(df["Rate"], downcast="float")
     city = df.groupby('City')
-    count_city = city["Rate"].count()
+    count_city = city["City"].count()
     rate_city = city["Rate"].mean()
-    analysisdf = pd.DataFrame({"City": count_city.index, "City Count":count_city.values, "Rate": rate_city.values})
-    analysis.to_csv(os.path.join(figure_path, "analysis.csv"))
-    return
+    analysisdf = pd.DataFrame({"City": count_city.index, "City Count":count_city.values, "Avg Rate": rate_city.values})
+    analysisdf.to_csv(os.path.join(figure_path, "analysis.csv"))
+    return analysisdf
 
-def make_city_bar():
-    """Makes bar graph of count of kiosks/meters by city"""
-    city_counts = parking_data["City"].value_counts()
-    city_counts.plot(kind='bar')
-    plt.xlabel('City')
-    plt.ylabel('Number of parking meters/kiosks')
-    plt.title('Number of parking meters/kiosks by city')
-    save_path = os.path.join(figure_path, "cityplot.png")
+def make_city_bar(df):
+    """Makes bar graph of count of kiosks/meters by city and average rate by city"""
+    df.plot.bar(x = "City", y = "City Count", title = "Parking meter/kiosk count by city")
+    plt.xlabel("City")
+    plt.ylabel("Meter Count")
+    plt.savefig(os.path.join(figure_path, "count_graph.png"))
+    plt.xticks(rotation=45)
+def make_avg_bar(df):
+    df.plot.bar(x = "City", y = "Avg Rate", title = "Average parking meter rate by city")
+    plt.xlabel("City")
+    plt.ylabel("Avg Rate (in $/hr)")
+    plt.xticks(rotation=45)
+    plt.savefig(os.path.join(figure_path, "rate_graph.png"))
+    
+    # city = pd.groupby(df)
+    # city_counts = city["City"].count()
+    # city_rate = city["Rate"].mean()
+    # city_sum = pd.DataFrame({"City":city_counts.index, "Count":city_counts.values})
+    # city_cum["Avg Rate"] = average_rate.values
+    # city_counts.plot(kind='bar')
+    # plt.xlabel('City')
+    # plt.ylabel('Number of parking meters/kiosks')
+    # plt.title('Number of parking meters/kiosks by city')
+    # save_path = os.path.join(figure_path, "cityplot.png")
     return
 if __name__ == "__main__":
     parking_data = combine_data()
-    print(parking_data["Rate"].dtype)
-    results_analysis(parking_data)
-    make_city_bar()
+    analysisdf = results_analysis(parking_data)
+    make_city_bar(analysisdf)
+    make_avg_bar(analysisdf)
 
 
 # import CSV
